@@ -7,7 +7,7 @@ class JobNew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: bottomBar(),
+      bottomSheet: BottomBar(),
       appBar: AppBar(
         title: Text('Job / New'),
         centerTitle: true,

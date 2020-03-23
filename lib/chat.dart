@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_app/widgets.dart';
+
+import 'const.dart';
+import 'widgets/receivedmessagewidget.dart';
+import 'widgets/sentmessagewidget.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -7,114 +10,201 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  bool _showBottom = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Back",
-          style: TextStyle(fontSize: 22),
-        ),
-        centerTitle: false,
-      ),
-      bottomSheet: bottomBar(),
-      body: Stack(
-        alignment: Alignment.center,
-        fit: StackFit.expand,
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            color: Colors.white,
-            child: ListView(
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black54),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            MyCircleAvatar(
+              imgUrl: friendsList[0]['imgUrl'],
+            ),
+            SizedBox(width: 15),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Container(
-                    margin: EdgeInsets.only(right: 80, left: 10),
-                    child: Stack(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(50)),
-                          width: MediaQuery.of(context).size.width,
-                          height: 50,
-                          child: Center(
-                              child: Text(
-                            "How May I Help You ?",
-                            style: TextStyle(color: Colors.white),
-                          )),
-                        ),
-                        CircleAvatar(
-                          backgroundColor: Colors.blue[900],
-                          radius: 30,
-                        ),
-                      ],
-                      alignment: Alignment.centerLeft,
-                    ),
+                Text(
+                  "User Name",
+                  style: Theme.of(context).textTheme.subhead,
+                  overflow: TextOverflow.clip,
+                ),
+                Text(
+                  "Online",
+                  style: Theme.of(context).textTheme.subtitle.apply(
+                        color: myPurple,
+                      ),
+                )
+              ],
+            )
+          ],
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(15),
+                    itemCount: messages.length,
+                    itemBuilder: (ctx, i) {
+                      if (messages[i]['status'] == MessageType.received) {
+                        return ReceivedMessagesWidget(i: i);
+                      } else {
+                        return SentMessageWidget(i: i);
+                      }
+                    },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Container(
-                    margin: EdgeInsets.only(right: 10, left: 80),
-                    child: Stack(
-                      children: <Widget>[
-                        Container(
+                Container(
+                  margin: EdgeInsets.all(15.0),
+                  height: 61,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(50)),
-                          height: 50,
-                          width: MediaQuery.of(context).size.width,
-                          child: Center(
-                              child: Text(
-                            "Problem",
-                            style: TextStyle(color: Colors.white),
-                          )),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(35.0),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 3),
+                                  blurRadius: 5,
+                                  color: Colors.grey)
+                            ],
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(Icons.face),
+                                onPressed: () {},
+                                color: myPurple,
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      hintText: "Type Something...",
+                                      border: InputBorder.none),
+                                ),
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.send,
+                                  color: myPurple,
+                                ),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.attach_file,
+                                  color: myPurple,
+                                ),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
                         ),
-                        CircleAvatar(
-                          backgroundColor: Colors.blue[900],
-                          radius: 30,
+                      ),
+                      SizedBox(width: 15),
+                      Container(
+                        padding: const EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                            color: myPurple, shape: BoxShape.circle),
+                        child: InkWell(
+                          child: Icon(
+                            Icons.keyboard_voice,
+                            color: Colors.white,
+                          ),
+                          onLongPress: () {
+                            setState(() {
+                              _showBottom = true;
+                            });
+                          },
                         ),
-                      ],
-                      alignment: Alignment.centerRight,
-                    ),
+                      )
+                    ],
                   ),
-                ),
+                )
               ],
             ),
           ),
-          Positioned(
-            bottom: 85,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              height: 50,
-              width: MediaQuery.of(context).size.width - 20,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 15,
-                  )
-                ],
-                border: Border.all(color: Colors.blue[800], width: 3),
-                color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    suffixIcon: Icon(
-                      Icons.send,
-                      color: Colors.blue[900],
-                      size: 30,
-                    )),
-              ),
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _showBottom = false;
+                });
+              },
             ),
           ),
+          _showBottom
+              ? Positioned(
+                  bottom: 90,
+                  left: 25,
+                  right: 25,
+                  child: Container(
+                    padding: EdgeInsets.all(25.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(0, 5),
+                            blurRadius: 15.0,
+                            color: Colors.grey)
+                      ],
+                    ),
+                    child: GridView.count(
+                      mainAxisSpacing: 21.0,
+                      crossAxisSpacing: 21.0,
+                      shrinkWrap: true,
+                      crossAxisCount: 3,
+                      children: List.generate(
+                        icons.length,
+                        (i) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Colors.grey[200],
+                              border: Border.all(color: myPurple, width: 2),
+                            ),
+                            child: IconButton(
+                              icon: Icon(
+                                icons[i],
+                                color: myPurple,
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );
   }
 }
+
+List<IconData> icons = [
+  Icons.image,
+  Icons.camera,
+  Icons.file_upload,
+  Icons.folder,
+  Icons.gif
+];

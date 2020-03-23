@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_app/widgets.dart';
+import 'package:job_app/const.dart';
 
 class ApplicationView extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _ApplicationViewState extends State<ApplicationView> {
         ),
         centerTitle: false,
       ),
-      bottomSheet: bottomBar(),
+      bottomSheet: BottomBar(),
       body: Column(
         children: <Widget>[
           Container(

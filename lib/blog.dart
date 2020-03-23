@@ -12,7 +12,7 @@ class _BlogviewState extends State<Blogview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: bottomBar(),
+      bottomSheet: BottomBar(),
       appBar: AppBar(
         title: Text('BlogView'),
         centerTitle: true,

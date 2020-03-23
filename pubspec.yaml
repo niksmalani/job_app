@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_auto_slider: ^0.0.3
+  google_fonts: ^0.3.10
 
 
   # The following adds the Cupertino Icons font to your application.

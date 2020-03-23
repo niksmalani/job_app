@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/applicationview.dart';
-import 'package:job_app/widgets.dart';
+import 'package:job_app/const.dart';
 
 class ApplicationScreen extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
         ),
         centerTitle: false,
       ),
-      bottomSheet: bottomBar(),
+      bottomSheet: BottomBar(),
       body: Column(
         children: <Widget>[
           Container(

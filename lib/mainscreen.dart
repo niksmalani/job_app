@@ -2,12 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:image_auto_slider/image_auto_slider.dart';
-import 'package:job_app/application.dart';
-import 'package:job_app/job_news.dart';
-import 'package:job_app/widgets.dart';
+import 'package:job_app/const.dart';
 
-import 'blog.dart';
 import 'chat.dart';
+import 'const.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -20,189 +18,146 @@ class _MainScreenState extends State<MainScreen> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      bottomSheet: bottomBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 15,
-                )
-              ],
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Column(
-              children: <Widget>[
-                ImageAutoSlider(
-                  assetImages: [
-                    AssetImage('assets/bs.jpg'),
-                    AssetImage('assets/bs1.jpg'),
-                    AssetImage('assets/bs2.jpg'),
-                  ],
-                  boxFit: BoxFit.cover,
-                  slideMilliseconds: 700,
-                  durationSecond: 3,
-                ),
-              ],
-            ),
-          ),
-          SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ChatScreen()));
-                      },
-                      child: Card(
-                        elevation: 10,
-                        child: Container(
-                          height: height / 5,
-                          width: width / 2.4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                height: height / 10,
-                                width: height / 10,
-                                child: Image.asset(
-                                  'assets/hand.png',
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              Text(
-                                "Assistant\nChat",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 22,
-                                ),
-                              ),
+      bottomSheet: BottomBar(),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                elevation: 12,
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(1),
+                    child: Card(
+                      elevation: 0,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        children: <Widget>[
+                          ImageAutoSlider(
+                            assetImages: [
+                              AssetImage('assets/bs1.jpg'),
+                              AssetImage('assets/bs2.png'),
+                              AssetImage('assets/bs3.jpeg'),
+                              AssetImage('assets/bs4.jpg'),
                             ],
+                            boxFit: BoxFit.cover,
+                            slideMilliseconds: 700,
+                            durationSecond: 5,
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ApplicationScreen()));
-                      },
-                      child: Card(
-                        elevation: 10,
-                        child: Container(
-                          height: height / 5,
-                          width: width / 2.4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                height: height / 10,
-                                width: height / 10,
-                                child: Image.asset(
-                                  'assets/checklist.png',
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              Text(
-                                "Applications",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 22,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => JobNew()));
-                        },
-                        child: Card(
-                          elevation: 10,
-                          child: Container(
-                            height: height / 5,
-                            width: width / 2.4,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Container(
-                                  height: height / 10,
-                                  width: height / 10,
-                                  child: Image.asset(
-                                    'assets/support.png',
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                                Text(
-                                  "Jobs",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Blogview()));
-                        },
-                        child: Card(
-                          elevation: 10,
-                          child: Container(
-                            height: height / 5,
-                            width: width / 2.4,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Container(
-                                  height: height / 10,
-                                  width: height / 10,
-                                  child: Image.asset(
-                                    'assets/tv.png',
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                                Text(
-                                  "News\nBlogs",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              ],
+              ),
             ),
-          )
-        ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ChatScreen()));
+                              },
+                              child: MyCardBox(
+                                height: height,
+                                width: width,
+                                icon: Icons.chat,
+                                text: "Assistant\nChat",
+                                color1: Colors.deepPurple,
+                                color2: Colors.deepPurpleAccent,
+                                iconColor: Colors.deepPurpleAccent,
+                                textColor: Color(0xff180B56),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: MyCardBox(
+                                height: height,
+                                width: width,
+                                icon: Icons.assignment,
+                                text: "Application",
+                                color1: Colors.teal,
+                                color2: Colors.tealAccent,
+                                iconColor: Colors.green,
+                                textColor: Color(0xff083C2C),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: MyCardBox(
+                                height: height,
+                                width: width,
+                                icon: Icons.work,
+                                text: "Job",
+                                color1: Colors.pink,
+                                color2: Colors.pinkAccent,
+                                iconColor: Colors.pink[800],
+                                textColor: Color(0xff5D0338),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: MyCardBox(
+                                height: height,
+                                width: width,
+                                icon: Icons.near_me,
+                                text: "New & Blog",
+                                color1: Colors.amber[600],
+                                color2: Colors.amberAccent,
+                                iconColor: Colors.amber[900],
+                                textColor: Color(0xff705103),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: 40,
+            ),
+          ],
+        ),
       ),
     );
   }

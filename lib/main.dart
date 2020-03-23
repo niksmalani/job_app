@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:job_app/mainscreen.dart';
 
 void main() => runApp(MyApp());
@@ -76,8 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                         child: Text(
                       "Create an account",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.notoSerif(
                         fontSize: 20,
                         color: Colors.white,
                       ),
@@ -102,10 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                         child: Text(
                       "Sign in",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.notoSerif(
                         fontSize: 20,
-                        color: Colors.blue,
+                        color: Colors.deepPurpleAccent,
                       ),
                     )),
                   ),
@@ -119,6 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             padding: EdgeInsets.all(60),
             height: height / 2,
+            width: width,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(
