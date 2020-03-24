@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'const.dart';
 
@@ -14,78 +15,124 @@ class _BlogviewState extends State<Blogview> {
     return Scaffold(
       bottomSheet: BottomBar(),
       appBar: AppBar(
-        title: Text('BlogView'),
-        centerTitle: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
+        ],
+        title: Text(
+          "Back",
+          style: TextStyle(fontSize: 22),
+        ),
+        centerTitle: false,
+        backgroundColor: myPink,
       ),
       body: Container(
         height: MediaQuery.of(context).size.height - 145,
         child: Column(
           children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Card(
-                elevation: 6,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          CircleAvatar(
-                            radius: 70,
-                            backgroundImage: NetworkImage(
-                                'https://images.pexels.com/photos/789786/pexels-photo-789786.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+            Card(
+              elevation: 6,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(300),
+                              boxShadow: [
+                                BoxShadow(color: Colors.grey, blurRadius: 10)
+                              ]),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 75,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.amber,
+                              radius: 70,
+                              child: Image.asset(
+                                "assets/icons/news_icon.png",
+                                color: Colors.white,
+                                scale: 15,
+                              ),
+                            ),
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text(
-                            'Title',
-                            style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 2),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        'Discription',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Suppose there is no error then we will call the method void save() and it will call all the onSave[3]. So, that all the form input could be stored in variable corresponding to each input Field.',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              'Title',
+                              style: GoogleFonts.notoSerif(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 2,
+                                  color: Colors.black.withOpacity(0.7)),
+                            ),
+                            Text(
+                              'Sub Title',
+                              style: GoogleFonts.notoSerif(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.normal,
+                                  letterSpacing: 2,
+                                  color: Colors.black.withOpacity(0.7)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      'Discription',
+                      style: GoogleFonts.notoSerif(
+                          color: Colors.black.withOpacity(0.7),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Suppose there is no error then we will call the method void save() and it will call all the onSave[3]. So, that all the form input could be stored in variable corresponding to each input Field.',
+                      style: GoogleFonts.notoSerif(fontSize: 16),
+                    ),
+                  ],
                 ),
               ),
             ),
-            MaterialButton(
-              height: 50,
-              minWidth: 120,
-              elevation: 10,
-              onPressed: () {},
-              child: Text(
-                'Apply',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+            Align(
+              alignment: Alignment.center,
+              child: OutlineButton(
+                textColor: Colors.pink,
+                onPressed: () {},
+                child: Container(
+                  width: 80,
+                  height: 40,
+                  child: Center(
+                    child: Text(
+                      'Apply',
+                      style: TextStyle(color: Colors.pink, fontSize: 18),
+                    ),
+                  ),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                color: myPink,
+                borderSide:
+                    BorderSide(color: Colors.pink, style: BorderStyle.solid),
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Colors.blue[700],
             ),
             SizedBox(
               height: 30,

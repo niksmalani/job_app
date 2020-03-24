@@ -27,6 +27,7 @@ class MyCircleAvatar extends StatelessWidget {
         ],
       ),
       child: CircleAvatar(
+        backgroundColor: Colors.pinkAccent[100],
         backgroundImage: NetworkImage("$imgUrl"),
       ),
     );
@@ -37,9 +38,9 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: myPurple, boxShadow: [
-        BoxShadow(color: Colors.grey, blurRadius: 10, offset: Offset(0.0, -2))
-      ]),
+      decoration: BoxDecoration(
+          color: myPink,
+          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 5)]),
       height: 65,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -52,7 +53,7 @@ class BottomBar extends StatelessWidget {
               child: Text(
                 "Profile",
                 style: GoogleFonts.notoSerif(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Colors.white,
                 ),
               ),
@@ -73,7 +74,7 @@ class BottomBar extends StatelessWidget {
               child: Text(
                 "Setting",
                 style: GoogleFonts.notoSerif(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Colors.white,
                 ),
               ),
@@ -104,12 +105,12 @@ class ButtonShape extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      color: Color(0xff6043F2),
+      color: Colors.pink[500],
     );
   }
 }
 
-Color myPurple = Color(0xff6043F2);
+Color myPink = Colors.pink[500];
 enum MessageType { sent, received }
 List<Map<String, dynamic>> friendsList = [
   {
@@ -228,7 +229,7 @@ class MyCardBox extends StatelessWidget {
   final width;
   final Color color1;
   final Color color2;
-  final IconData icon;
+  final String image;
   final String text;
   final Color textColor;
   final Color iconColor;
@@ -239,7 +240,7 @@ class MyCardBox extends StatelessWidget {
       this.width,
       this.color1,
       this.color2,
-      this.icon,
+      this.image,
       this.text,
       this.textColor,
       this.iconColor})
@@ -249,14 +250,14 @@ class MyCardBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              color1.withOpacity(0.4),
-              color2.withOpacity(0.4),
+              color1.withOpacity(0.9),
+              color2.withOpacity(0.9),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -265,20 +266,35 @@ class MyCardBox extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: 40,
+            Expanded(
+              flex: 2,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Image.asset(
+                    image,
+                    scale: 20,
+                    color: iconColor,
+                  ),
+                ),
               ),
             ),
-            Text(
-              "$text",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.varelaRound(
-                  fontSize: 22,
-                  color: textColor,
-                  fontWeight: FontWeight.normal),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    "$text",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.notoSerif(
+                        fontSize: 20,
+                        color: textColor,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:job_app/mainscreen.dart';
 
+import 'const.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       home: HomeScreen(),
+      theme: ThemeData(primaryColor: Colors.pink),
     );
   }
 }
@@ -45,11 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.blue[900].withOpacity(0.9),
-                  Colors.blue[900].withOpacity(0.9),
-                  Color.fromRGBO(10, 91, 253, 0.8),
-                  Color.fromRGBO(17, 18, 165, 0.8),
-                  Color.fromRGBO(15, 0, 55, 0.9),
+                  Colors.pink[400].withOpacity(0.4),
+                  Colors.pink[500].withOpacity(0.5),
+                  Colors.pink[800].withOpacity(0.7),
+                  Colors.pink[800].withOpacity(0.9),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -60,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 SizedBox(
-                  height: height / 20,
+                  height: height / 10,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -104,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Sign in",
                       style: GoogleFonts.notoSerif(
                         fontSize: 20,
-                        color: Colors.deepPurpleAccent,
+                        color: myPink,
                       ),
                     )),
                   ),
@@ -123,7 +125,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(
                     bottom: Radius.elliptical(width * 2, 300))),
-            child: Image.asset('assets/logo-1.png'),
+            child: Align(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    'assets/icons/job_icon.png',
+                    scale: 13,
+                    color: Colors.pink[500],
+                  ),
+                  Text(
+                    "App Logo",
+                    style: GoogleFonts.lobster(
+                        color: Colors.pink[500],
+                        fontWeight: FontWeight.w600,
+                        fontSize: 45),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

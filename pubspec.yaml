@@ -21,6 +21,8 @@ dependencies:
     sdk: flutter
   image_auto_slider: ^0.0.3
   google_fonts: ^0.3.10
+  carousel_pro: ^1.0.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -45,6 +47,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/
+     - assets/icons/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

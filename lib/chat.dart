@@ -17,8 +17,8 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black54),
+        backgroundColor: Colors.pink[500],
+        iconTheme: IconThemeData(color: Colors.white),
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -32,13 +32,16 @@ class _ChatScreenState extends State<ChatScreen> {
               children: <Widget>[
                 Text(
                   "User Name",
-                  style: Theme.of(context).textTheme.subhead,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subhead
+                      .copyWith(color: Colors.white),
                   overflow: TextOverflow.clip,
                 ),
                 Text(
                   "Online",
                   style: Theme.of(context).textTheme.subtitle.apply(
-                        color: myPurple,
+                        color: Colors.white,
                       ),
                 )
               ],
@@ -92,7 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               IconButton(
                                 icon: Icon(Icons.face),
                                 onPressed: () {},
-                                color: myPurple,
+                                color: myPink,
                               ),
                               Expanded(
                                 child: TextField(
@@ -104,14 +107,14 @@ class _ChatScreenState extends State<ChatScreen> {
                               IconButton(
                                 icon: Icon(
                                   Icons.send,
-                                  color: myPurple,
+                                  color: myPink,
                                 ),
                                 onPressed: () {},
                               ),
                               IconButton(
                                 icon: Icon(
                                   Icons.attach_file,
-                                  color: myPurple,
+                                  color: myPink,
                                 ),
                                 onPressed: () {},
                               ),
@@ -123,7 +126,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       Container(
                         padding: const EdgeInsets.all(15.0),
                         decoration: BoxDecoration(
-                            color: myPurple, shape: BoxShape.circle),
+                            color: myPink, shape: BoxShape.circle),
                         child: InkWell(
                           child: Icon(
                             Icons.keyboard_voice,
@@ -179,12 +182,12 @@ class _ChatScreenState extends State<ChatScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
                               color: Colors.grey[200],
-                              border: Border.all(color: myPurple, width: 2),
+                              border: Border.all(color: myPink, width: 2),
                             ),
                             child: IconButton(
                               icon: Icon(
                                 icons[i],
-                                color: myPurple,
+                                color: myPink,
                               ),
                               onPressed: () {},
                             ),

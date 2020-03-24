@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'const.dart';
 
@@ -9,50 +10,154 @@ class JobNew extends StatelessWidget {
     return Scaffold(
       bottomSheet: BottomBar(),
       appBar: AppBar(
-        title: Text('Job / New'),
-        centerTitle: true,
+        title: Text(
+          "Back",
+          style: TextStyle(fontSize: 22),
+        ),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.more_vert), onPressed: () {})
+        ],
+        centerTitle: false,
         elevation: 0,
+        backgroundColor: myPink,
       ),
       body: Column(
         children: <Widget>[
           Container(
             height: 60,
-            child: ListView.builder(
+            child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 10),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Container(
+              children: <Widget>[
+                Container(
                   width: 100,
                   margin: EdgeInsets.all(10),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        bottomRight: Radius.circular(3),
-                        topLeft: Radius.circular(3),
-                      ),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            offset: Offset(-1.5, 1.0),
-                            spreadRadius: 2,
-                            blurRadius: 1),
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            offset: Offset(1.0, -1.5),
-                            spreadRadius: 1,
-                            blurRadius: 1),
-                      ]),
-                  child: Text('hello'),
-                );
-              },
-              itemCount: 5,
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border(
+                      left: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      right: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      bottom: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      top: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                    ),
+                  ),
+                  child: Text(
+                    'Local',
+                    style: GoogleFonts.notoSerif(color: Colors.pink),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  margin: EdgeInsets.all(10),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border(
+                      left: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      right: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      bottom: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      top: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                    ),
+                  ),
+                  child: Text(
+                    'Zonal',
+                    style: GoogleFonts.notoSerif(color: Colors.white),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  margin: EdgeInsets.all(10),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border(
+                      left: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      right: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      bottom: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      top: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                    ),
+                  ),
+                  child: Text(
+                    'National',
+                    style: GoogleFonts.notoSerif(color: Colors.pink),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  margin: EdgeInsets.all(10),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border(
+                      left: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      right: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      bottom: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                      top: BorderSide(
+                          color: Colors.pink,
+                          style: BorderStyle.solid,
+                          width: 2),
+                    ),
+                  ),
+                  child: Text(
+                    'Global',
+                    style: GoogleFonts.notoSerif(color: Colors.pink),
+                  ),
+                ),
+              ],
             ),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [BoxShadow(color: Colors.blueGrey, blurRadius: 10)]),
+          ),
+          Divider(
+            thickness: 1,
           ),
           Expanded(
             child: ListView.builder(
@@ -61,19 +166,22 @@ class JobNew extends StatelessWidget {
                 return Card(
                   elevation: 10,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30))),
+                      borderRadius: BorderRadius.circular(10)),
                   margin: EdgeInsets.fromLTRB(15, 0, 15, 20),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
+                        vertical: 20, horizontal: 10),
                     child: Row(
                       children: <Widget>[
                         CircleAvatar(
                           radius: 40,
-                          backgroundImage: NetworkImage(
-                              'https://images.pexels.com/photos/789786/pexels-photo-789786.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+                          backgroundColor: index.isEven
+                              ? Colors.green.withOpacity(0.8)
+                              : Colors.orange.withOpacity(0.8),
+                          child: Image.asset(
+                            'assets/icons/job_icon.png',
+                            scale: 25,
+                          ),
                         ),
                         SizedBox(
                           width: 20,
@@ -82,17 +190,17 @@ class JobNew extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Title',
-                              style: TextStyle(
-                                  color: Colors.blueGrey,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w500),
+                              'Job Title',
+                              style: GoogleFonts.notoSerif(
+                                  color: Colors.black.withOpacity(0.8),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              'Discription',
-                              style: TextStyle(
+                              'job description',
+                              style: GoogleFonts.notoSerif(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize: 18,
                               ),
                             )
                           ],
@@ -104,6 +212,9 @@ class JobNew extends StatelessWidget {
               },
               itemCount: 20,
             ),
+          ),
+          Container(
+            height: 65,
           )
         ],
       ),
