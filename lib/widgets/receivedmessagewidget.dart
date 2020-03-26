@@ -15,7 +15,7 @@ class ReceivedMessagesWidget extends StatelessWidget {
       child: Row(
         children: <Widget>[
           MyCircleAvatar(
-            imgUrl: messages[i]['contactImgUrl'],
+            image: "assets/user.jpg",
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +29,7 @@ class ReceivedMessagesWidget extends StatelessWidget {
                     maxWidth: MediaQuery.of(context).size.width * .6),
                 padding: const EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
-                  color: Colors.pink[50],
+                  color: Colors.deepPurple[50],
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(25),
                     bottomLeft: Radius.circular(25),

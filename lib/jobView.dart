@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:job_app/const.dart';
 
-import 'const.dart';
-
-class Blogview extends StatefulWidget {
+class JobView extends StatefulWidget {
   @override
-  _BlogviewState createState() => _BlogviewState();
+  _JobViewState createState() => _JobViewState();
 }
 
-class _BlogviewState extends State<Blogview> {
+class _JobViewState extends State<JobView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,10 +51,10 @@ class _BlogviewState extends State<Blogview> {
                             backgroundColor: Colors.white,
                             radius: 70,
                             child: CircleAvatar(
-                              backgroundColor: Colors.amber,
+                              backgroundColor: myBlue,
                               radius: 65,
                               child: Image.asset(
-                                "assets/icons/news_icon.png",
+                                "assets/icons/job_icon.png",
                                 color: Colors.white,
                                 scale: 15,
                               ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'const.dart';
@@ -17,13 +18,13 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.pink[500],
+        backgroundColor: myBlue,
         iconTheme: IconThemeData(color: Colors.white),
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             MyCircleAvatar(
-              imgUrl: friendsList[0]['imgUrl'],
+              image: "assets/user.jpg",
             ),
             SizedBox(width: 15),
             Column(
@@ -34,13 +35,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   "User Name",
                   style: Theme.of(context)
                       .textTheme
-                      .subhead
+                      .subtitle1
                       .copyWith(color: Colors.white),
                   overflow: TextOverflow.clip,
                 ),
                 Text(
                   "Online",
-                  style: Theme.of(context).textTheme.subtitle.apply(
+                  style: Theme.of(context).textTheme.subtitle1.apply(
                         color: Colors.white,
                       ),
                 )
@@ -48,12 +49,6 @@ class _ChatScreenState extends State<ChatScreen> {
             )
           ],
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Stack(
         children: <Widget>[
@@ -95,7 +90,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               IconButton(
                                 icon: Icon(Icons.face),
                                 onPressed: () {},
-                                color: myPink,
+                                color: myBlue,
                               ),
                               Expanded(
                                 child: TextField(
@@ -105,16 +100,18 @@ class _ChatScreenState extends State<ChatScreen> {
                                 ),
                               ),
                               IconButton(
+                                padding: EdgeInsets.only(left: 15),
                                 icon: Icon(
                                   Icons.send,
-                                  color: myPink,
+                                  color: myBlue,
                                 ),
+                                splashColor: Colors.deepPurpleAccent,
                                 onPressed: () {},
                               ),
                               IconButton(
                                 icon: Icon(
                                   Icons.attach_file,
-                                  color: myPink,
+                                  color: myBlue,
                                 ),
                                 onPressed: () {},
                               ),
@@ -122,23 +119,6 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15),
-                      Container(
-                        padding: const EdgeInsets.all(15.0),
-                        decoration: BoxDecoration(
-                            color: myPink, shape: BoxShape.circle),
-                        child: InkWell(
-                          child: Icon(
-                            Icons.keyboard_voice,
-                            color: Colors.white,
-                          ),
-                          onLongPress: () {
-                            setState(() {
-                              _showBottom = true;
-                            });
-                          },
-                        ),
-                      )
                     ],
                   ),
                 )
@@ -182,12 +162,12 @@ class _ChatScreenState extends State<ChatScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
                               color: Colors.grey[200],
-                              border: Border.all(color: myPink, width: 2),
+                              border: Border.all(color: myBlue, width: 2),
                             ),
                             child: IconButton(
                               icon: Icon(
                                 icons[i],
-                                color: myPink,
+                                color: myBlue,
                               ),
                               onPressed: () {},
                             ),

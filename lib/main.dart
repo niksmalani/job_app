@@ -1,5 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:job_app/mainscreen.dart';
 
 import 'const.dart';
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       home: HomeScreen(),
-      theme: ThemeData(primaryColor: Colors.pink),
+      theme: ThemeData(primaryColor: myBlue, fontFamily: 'sfpro'),
     );
   }
 }
@@ -48,10 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.pink[400].withOpacity(0.4),
-                  Colors.pink[500].withOpacity(0.5),
-                  Colors.pink[800].withOpacity(0.7),
-                  Colors.pink[800].withOpacity(0.9),
+                  myBlue.withOpacity(0.4),
+                  myBlue.withOpacity(0.5),
+                  myBlue.withOpacity(0.7),
+                  myBlue,
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -63,6 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 SizedBox(
                   height: height / 10,
+                ),
+                AutoSizeText(
+                    "Zutzu-Personal Recruiment Assistant For Local And Internationl Job."),
+                SizedBox(
+                  height: height / 30,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -79,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                         child: Text(
                       "Create an account",
-                      style: GoogleFonts.notoSerif(
+                      style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                       ),
@@ -104,9 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                         child: Text(
                       "Sign in",
-                      style: GoogleFonts.notoSerif(
+                      style: TextStyle(
                         fontSize: 20,
-                        color: myPink,
+                        color: myBlue,
                       ),
                     )),
                   ),
@@ -125,24 +130,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(
                     bottom: Radius.elliptical(width * 2, 300))),
-            child: Align(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    'assets/icons/job_icon.png',
-                    scale: 13,
-                    color: Colors.pink[500],
-                  ),
-                  Text(
-                    "App Logo",
-                    style: GoogleFonts.lobster(
-                        color: Colors.pink[500],
-                        fontWeight: FontWeight.w600,
-                        fontSize: 45),
-                  ),
-                ],
+            child: Center(
+              child: Container(
+                width: width / 1.5,
+                child: Image.asset(
+                  'assets/logo.png',
+                ),
               ),
             ),
           ),

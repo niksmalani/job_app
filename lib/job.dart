@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_app/applicationView.dart';
+import 'package:job_app/jobView.dart';
 
 import 'const.dart';
 
-class Application extends StatelessWidget {
+class JobNew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class Application extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          TopManu(),
+          JobTopManu(),
           Divider(
             thickness: 1,
           ),
@@ -41,10 +41,8 @@ class Application extends StatelessWidget {
                     splashColor:
                         index.isEven ? Colors.green[100] : Colors.orange[100],
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ApplicationScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => JobView()));
                     },
                     padding: EdgeInsets.all(0),
                     child: Padding(
@@ -58,7 +56,7 @@ class Application extends StatelessWidget {
                                 ? Colors.green.withOpacity(0.8)
                                 : Colors.orange.withOpacity(0.8),
                             child: Image.asset(
-                              'assets/icons/application_icon.png',
+                              'assets/icons/job_icon.png',
                               scale: 25,
                             ),
                           ),
@@ -69,14 +67,14 @@ class Application extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'Application Title',
+                                'Job Title',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.8),
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600),
                               ),
                               Text(
-                                'description',
+                                'job description',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
